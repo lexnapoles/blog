@@ -1,14 +1,24 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
+
+const config = require('./siteConfig')
 
 module.exports = {
   siteMetadata: {
-    title: 'Alejandro Napoles',
-    author: 'Alejandro Napoles',
-    description:
-      'A guy talking about computer science, software development and other crazy things.',
-    siteUrl: 'https://alejandronapoles.com/',
+    title: config.title,
+    author: config.author,
+    description: config.description,
+    siteUrl: config.siteUrl,
+    rssMetadata: {
+      site_url: config.siteUrl,
+      feed_url: `${config.siteUrl}/rss.xml`,
+      title: config.title,
+      description: config.description,
+      // image_url: `${config.siteUrl}${config.siteLogo}`,
+      author: config.author,
+      copyright: config.copyright,
+    },
   },
   pathPrefix: '/blog',
   plugins: [
@@ -51,7 +61,79 @@ module.exports = {
         anonymize: true,
       },
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        setup(ref) {
+          const ret = ref.query.site.siteMetadata.rssMetadata
+          ret.allMarkdownRemark = ref.query.allMarkdownRemark
+          ret.generator = 'GatsbyJS GCN Starter'
+          return ret
+        },
+        query: `
+        {
+          site {
+            siteMetadata {
+              rssMetadata {
+                site_url
+                feed_url
+                title
+                description
+                image_url
+                author
+                copyright
+              }
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize(ctx) {
+              const rssMetadata = ctx.query.site.siteMetadata.rssMetadata
+              return ctx.query.allContentfulBlogPost.edges.map(edge => ({
+                date: edge.node.publishDate,
+                title: edge.node.title,
+                description:
+                  edge.node.excerpt.childMarkdownRemark.internal.content,
+                url: rssMetadata.site_url + '/' + edge.node.slug,
+                guid: rssMetadata.site_url + '/' + edge.node.slug,
+                custom_elements: [
+                  {
+                    'content:encoded': edge.node.body.childMarkdownRemark.html,
+                  },
+                ],
+              }))
+            },
+            query: `
+              {
+                allContentfulBlogPost(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+                  edges {
+                    node {
+                      title
+                      slug
+                      publishDate(formatString: "DD MMMM, YYYY")
+                      body {
+                        childMarkdownRemark {
+                          html
+                        }
+                      }
+                      excerpt {
+                        childMarkdownRemark {
+                          internal {
+                            content
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+          }`,
+            output: '/rss.xml',
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
