@@ -15,7 +15,7 @@ module.exports = {
       feed_url: `${config.siteUrl}/rss.xml`,
       title: config.title,
       description: config.description,
-      // image_url: `${config.siteUrl}${config.siteLogo}`,
+      image_url: '',
       author: config.author,
       copyright: config.copyright,
     },
@@ -79,7 +79,6 @@ module.exports = {
                 feed_url
                 title
                 description
-                image_url
                 author
                 copyright
               }
