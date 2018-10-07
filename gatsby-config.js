@@ -67,7 +67,7 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata
           ret.allMarkdownRemark = ref.query.allMarkdownRemark
-          ret.generator = 'GatsbyJS GCN Starter'
+          ret.generator = 'Alejandro Napoles'
           return ret
         },
         query: `
@@ -111,7 +111,7 @@ module.exports = {
                     node {
                       title
                       slug
-                      publishDate(formatString: "DD MMMM, YYYY")
+                      publishDate(formatString: "MMMM Do, YYYY")
                       body {
                         childMarkdownRemark {
                           html
