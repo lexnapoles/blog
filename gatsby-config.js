@@ -56,11 +56,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-127080234-1`,
+        trackingId: process.env.GOOGLE_ANALYTICS,
         respectDNT: true,
         anonymize: true,
       },
     },
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-feed',
       options: {
