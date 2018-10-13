@@ -2,8 +2,8 @@ import React from 'react'
 import get from 'lodash/get'
 
 // Import typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+import 'typeface-arvo'
+import 'typeface-cabin'
 
 import { rhythm } from '../utils/typography'
 

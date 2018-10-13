@@ -36,10 +36,10 @@
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
     "styled-components": "^3.4.10",
-    "typeface-merriweather": "0.0.54",
-    "typeface-montserrat": "0.0.54",
+    "typeface-arvo": "0.0.54",
+    "typeface-cabin": "0.0.54",
     "typography": "^0.16.17",
-    "typography-theme-wordpress-2016": "^0.15.10"
+    "typography-theme-doelger": "^0.15.11"
   },
   "devDependencies": {
     "eslint": "^5.7.0",
