@@ -41,7 +41,7 @@ class BlogIndex extends React.Component {
                 </Link>
               </h3>
               <small>{node.publishDate}</small>
-              <p
+              <div
                 dangerouslySetInnerHTML={{
                   __html: node.excerpt.childMarkdownRemark.html,
                 }}
