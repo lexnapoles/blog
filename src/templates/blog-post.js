@@ -1,17 +1,40 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
 import get from 'lodash/get'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
 
+const ListContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+`
+
+const PublishDate = styled.p`
+  ${scale(-1 / 5)};
+  display: block;
+  margin-bottom: ${rhythm(1)};
+  margin-top: ${rhythm(-0.5)};
+`
+
+const HR = styled.hr`
+  margin-bottom: ${rhythm(1)};
+`
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const siteDescription = get(this.props, 'data.site.siteMetadata.description')
+    const siteDescription = get(
+      this.props,
+      'data.site.siteMetadata.description'
+    )
     const [author] = get(this.props, 'data.allContentfulPerson.edges')
     const { previous, next } = this.props.pageContext
 
@@ -23,32 +46,15 @@ class BlogPostTemplate extends React.Component {
           title={`${post.title} | ${siteTitle}`}
         />
         <h1>{post.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-0.5),
-          }}
-        >
-          {post.publishDate}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
+        <PublishDate>{post.publishDate}</PublishDate>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html,
           }}
         />
+        <HR />
         <Bio person={author} />
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
+        <ListContainer>
           {previous && (
             <li>
               <Link to={previous.slug} rel="prev">
@@ -64,7 +70,7 @@ class BlogPostTemplate extends React.Component {
               </Link>
             </li>
           )}
-        </ul>
+        </ListContainer>
       </Layout>
     )
   }
@@ -89,7 +95,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(filter: { contentful_id: { eq: "798aKfwJQQy2cym4ogygGo" } }) {
+    allContentfulPerson(
+      filter: { contentful_id: { eq: "798aKfwJQQy2cym4ogygGo" } }
+    ) {
       edges {
         node {
           name

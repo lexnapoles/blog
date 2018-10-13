@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import get from 'lodash/get'
 
 // Import typefaces
@@ -7,6 +8,19 @@ import 'typeface-cabin'
 
 import { rhythm } from '../utils/typography'
 
+const Flex = styled.div`
+  display: flex;
+  margin-bottom: ${rhythm(2.5)};
+`
+
+const Image = styled.img`
+  margin-right: ${rhythm(1)};
+  margin-bottom: 0;
+  width: ${rhythm(3)};
+  height: ${rhythm(3)};
+  border-radius: ${rhythm(3)};
+`
+
 class Bio extends React.Component {
   render() {
     const {
@@ -14,29 +28,17 @@ class Bio extends React.Component {
     } = this.props.person
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          marginBottom: rhythm(2.5),
-        }}
-      >
-        <img
+      <Flex>
+        <Image
           src={image.file.url}
           alt={name}
-          style={{
-            marginRight: rhythm(1),
-            marginBottom: 0,
-            width: rhythm(3),
-            height: rhythm(3),
-            borderRadius: rhythm(3),
-          }}
         />
         <p>
           Written by <strong>{name}</strong>. {bio.bio}{' '}
           <a href={twitter}>Twitter</a>{' '}
           <a href={github}>Github</a>
         </p>
-      </div>
+      </Flex>
     )
   }
 }

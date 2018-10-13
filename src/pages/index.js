@@ -1,11 +1,20 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'
+
+const Title = styled.h3`
+  margin-bottom: ${rhythm(1 / 4)};
+`
+
+const StyledLink = styled(Link)`
+  box-shadow: none;
+`
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,9 +24,6 @@ class BlogIndex extends React.Component {
       'props.data.site.siteMetadata.description'
     )
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
-
-    console.log(this.props)
 
     return (
       <Layout location={this.props.location}>
@@ -26,20 +32,13 @@ class BlogIndex extends React.Component {
           meta={[{ name: 'description', content: siteDescription }]}
           title={siteTitle}
         />
-        <Bio person={author} />
         {posts.map(({ node }) => {
           const title = node.title
           return (
             <div key={node.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={node.slug}>
-                  {title}
-                </Link>
-              </h3>
+              <Title>
+                <StyledLink to={node.slug}>{title}</StyledLink>
+              </Title>
               <small>{node.publishDate}</small>
               <div
                 dangerouslySetInnerHTML={{
@@ -78,23 +77,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(filter: { contentful_id: { eq: "798aKfwJQQy2cym4ogygGo" } }) {
-      edges {
-        node {
-          name
-          bio {
-            bio
-          }
-          image {
-            file {
-              url
-            }
-          }
-          twitter
-          github
-        }
-      }
-    }
   }
-
 `

@@ -1,7 +1,31 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
+
+const H1 = styled.h1`
+  ${scale(1.5)};
+  margin-bottom: ${rhythm(1.5)};
+  margin-top: 0;
+`
+
+const H2 = styled.h2`
+  margin-top: 0;
+  margin-bottom: ${rhythm(-1)};
+`
+
+const StyledLink = styled(Link)`
+  box-shadow: none;
+  text-decoration: under;
+  color: inherit;
+`
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: ${rhythm(24)};
+  padding: ${rhythm(1.5)};
+`
 
 class Template extends React.Component {
   render() {
@@ -11,58 +35,22 @@ class Template extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Alejandro Napoles
-          </Link>
-        </h1>
+        <H1 style={{ ...scale }}>
+          <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
+        </H1>
       )
     } else {
       header = (
-        <h3
-          style={{
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Alejandro Napoles
-          </Link>
-        </h3>
+        <H2>
+          <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
+        </H2>
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
+      <Container>
         {header}
         {children}
-      </div>
+      </Container>
     )
   }
 }
