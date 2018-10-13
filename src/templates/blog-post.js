@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import get from 'lodash/get'
+import { DiscussionEmbed } from 'disqus-react'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
@@ -35,6 +36,13 @@ class BlogPostTemplate extends React.Component {
       this.props,
       'data.site.siteMetadata.description'
     )
+    
+    const disqusShortname = 'alejandronapoles'
+    const disqusConfig = {
+      identifier: post.contentul_id,
+      title: post.title,
+    }
+
     const [author] = get(this.props, 'data.allContentfulPerson.edges')
     const { previous, next } = this.props.pageContext
 
@@ -71,6 +79,7 @@ class BlogPostTemplate extends React.Component {
             </li>
           )}
         </ListContainer>
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </Layout>
     )
   }
@@ -89,6 +98,7 @@ export const pageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")
+      contentful_id
       body {
         childMarkdownRemark {
           html

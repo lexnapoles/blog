@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
+    "disqus-react": "^1.0.5",
     "dotenv": "^6.1.0",
     "gatsby": "next",
     "gatsby-plugin-feed": "next",
