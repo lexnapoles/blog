@@ -25,7 +25,7 @@ const PublishDate = styled.p`
 `
 
 const HR = styled.hr`
-  margin-bottom: ${rhythm(1)};
+  margin: ${rhythm(2)} 0;
 `
 
 class BlogPostTemplate extends React.Component {

@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 
 // Import typefaces
-import 'typeface-arvo'
-import 'typeface-cabin'
+
 
 import { rhythm } from '../utils/typography'
 
