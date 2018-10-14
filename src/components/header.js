@@ -31,16 +31,13 @@ const rootPathRegex = new RegExp(
 
 const isRootPath = location => location.pathname.match(rootPathRegex)
 
-const Header = ({ location }) => {
-  console.log(location.pathname)
-  console.log(isRootPath(location))
- return isRootPath(location) ? (
+const Header = ({ location }) =>
+  isRootPath(location) ? (
     <H1>Alejandro Napoles</H1>
   ) : (
     <H2>
       <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
     </H2>
   )
-}
 
 export default Header
