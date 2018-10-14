@@ -4,30 +4,9 @@ import styled from 'styled-components'
 import 'typeface-arvo'
 import 'typeface-cabin'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import License from './license'
-
-const H1 = styled.h1`
-  ${scale(1)};
-  margin-bottom: ${rhythm(1.5)};
-  margin-top: 0;
-  overflow-wrap: break-word;
-
-  @media (min-width: 536px) {
-    ${scale(1.5)};
-  }
-`
-
-const H2 = styled.h2`
-  margin-top: 0;
-  margin-bottom: ${rhythm(-1)};
-`
-
-const StyledLink = styled(Link)`
-  box-shadow: none;
-  text-decoration: under;
-  color: inherit;
-`
+import Header from './header'
 
 const Container = styled.div`
   .gatsby-highlight {
@@ -39,30 +18,12 @@ const Container = styled.div`
   padding: ${rhythm(1.5)};
 `
 
-class Layout extends React.Component {
-  render() {
-    const { location, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}\/`
-    let header
-    const rootPathRegex = new RegExp(`${rootPath}$|${rootPath}(.\d)\/$`, 'gi')
-
-    if (location.pathname.match(rootPathRegex)) {
-      header = <H1 style={{ ...scale }}>Alejandro Napoles</H1>
-    } else {
-      header = (
-        <H2>
-          <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
-        </H2>
-      )
-    }
-    return (
-      <Container>
-        {header}
-        {children}
-        <License />
-      </Container>
-    )
-  }
-}
+const Layout = ({ location, children }) => (
+  <Container>
+    <Header location={location} />
+    {children}
+    <License />
+  </Container>
+)
 
 export default Layout

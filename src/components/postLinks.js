@@ -27,9 +27,9 @@ const NextLink = styled(Link)`
 const PostLinks = ({ previous, next }) => (
   <Wrapper>
     {previous && (
-      <PreviousLink to={`/${previous.slug}/`}>&#8592; Prev Post</PreviousLink>
+      <PreviousLink to={`/${previous.slug}`}>&#8592; Prev Post</PreviousLink>
     )}
-    {next && <NextLink to={`/${next.slug}/`}>Next Post &#8594;</NextLink>}
+    {next && <NextLink to={`/${next.slug}`}>Next Post &#8594;</NextLink>}
   </Wrapper>
 )
 
