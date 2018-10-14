@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
+
 import { rhythm, scale } from '../utils/typography'
 
 const H1 = styled.h1`
@@ -22,6 +23,10 @@ const StyledLink = styled(Link)`
 `
 
 const Container = styled.div`
+  .gatsby-highlight {
+    margin-bottom: ${rhythm(1)};
+  }
+
   margin: 0 auto;
   max-width: ${rhythm(24)};
   padding: ${rhythm(1.5)};
