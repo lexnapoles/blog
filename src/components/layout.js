@@ -8,9 +8,14 @@ import { rhythm, scale } from '../utils/typography'
 import License from './license'
 
 const H1 = styled.h1`
-  ${scale(1.5)};
+  ${scale(1)};
   margin-bottom: ${rhythm(1.5)};
   margin-top: 0;
+  overflow-wrap: break-word;
+
+  @media (min-width: 536px) {
+    ${scale(1.5)};
+  }
 `
 
 const H2 = styled.h2`
@@ -34,18 +39,19 @@ const Container = styled.div`
   padding: ${rhythm(1.5)};
 `
 
-class Template extends React.Component {
+class Layout extends React.Component {
   render() {
     const { location, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
+    const rootPath = `${__PATH_PREFIX__}\/`
     let header
+    const rootPathRegex = new RegExp(`${rootPath}$|${rootPath}(.\d)\/$`, 'gi')
+    
 
-    if (location.pathname === rootPath) {
-      header = (
-        <H1 style={{ ...scale }}>
-          <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
-        </H1>
-      )
+    console.log('rootPath', rootPath)
+    console.log('pathname', location.pathname)
+    console.log('match', location.pathname.match(rootPathRegex))
+    if (location.pathname.match(rootPathRegex)) {
+      header = <H1 style={{ ...scale }}>Alejandro Napoles</H1>
     } else {
       header = (
         <H2>
@@ -57,10 +63,10 @@ class Template extends React.Component {
       <Container>
         {header}
         {children}
-        <License/>
+        <License />
       </Container>
     )
   }
 }
 
-export default Template
+export default Layout
