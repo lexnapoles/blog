@@ -1,21 +1,12 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/layout'
-import { rhythm } from '../utils/typography'
 import Pagination from '../components/pagination'
 import PostExcerpt from '../components/postExcerpt'
-
-const Title = styled.h3`
-  margin-bottom: ${rhythm(1 / 4)};
-`
-
-const StyledLink = styled(Link)`
-  box-shadow: none;
-`
 
 const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = get(data, 'site.siteMetadata.title')
@@ -39,6 +30,21 @@ const BlogIndex = ({ data, pageContext, location }) => {
 }
 
 export default BlogIndex
+
+BlogIndex.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    previous: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
+    next: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+}
 
 export const pageQuery = graphql`
   query HomeQuery($skip: Int!, $limit: Int!) {

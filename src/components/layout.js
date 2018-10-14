@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import 'typeface-arvo'
 import 'typeface-cabin'
@@ -25,5 +25,12 @@ const Layout = ({ location, children }) => (
     <License />
   </Container>
 )
+
+Layout.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  children: PropTypes.node,
+}
 
 export default Layout

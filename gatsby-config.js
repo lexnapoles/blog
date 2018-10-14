@@ -164,6 +164,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-nprogress',
-    'gatsby-plugin-netlify'
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-eslint',
   ],
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
@@ -29,5 +30,20 @@ const PostExcerpt = ({
     />
   </div>
 )
+
+PostExcerpt.propTypes = {
+  post: PropTypes.shape({
+    node: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      publishDate: PropTypes.string.isRequired,
+      excerpt: PropTypes.shape({
+        childMarkdownRemark: PropTypes.shape({
+          html: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }),
+}
 
 export default PostExcerpt

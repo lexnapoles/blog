@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 
 const Image = styled.img`
   border-width: 0;

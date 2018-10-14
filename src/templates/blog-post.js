@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import get from 'lodash/get'
 import { DiscussionEmbed } from 'disqus-react'
@@ -9,14 +10,6 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
-
-const ListContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
-`
 
 const PublishDate = styled.p`
   ${scale(-1 / 5)};
@@ -65,6 +58,21 @@ const BlogPostTemplate = ({
       <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </Layout>
   )
+}
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    previous: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
+    next: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default BlogPostTemplate

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -32,5 +33,14 @@ const PostLinks = ({ previous, next }) => (
     {next && <NextLink to={`/${next.slug}`}>Next Post &#8594;</NextLink>}
   </Wrapper>
 )
+
+PostLinks.propTypes = {
+  previous: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
+  next: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 export default PostLinks

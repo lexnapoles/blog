@@ -1,5 +1,8 @@
+/* global __PATH_PREFIX__ */
+
 import React from 'react'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
@@ -26,7 +29,7 @@ const StyledLink = styled(Link)`
 `
 
 const rootPathRegex = new RegExp(
-  `^${__PATH_PREFIX__}\/$|${__PATH_PREFIX__}\/+\\d$|\\d/\$`
+  `^${__PATH_PREFIX__}/$|${__PATH_PREFIX__}/+\\d$|\\d/$`
 )
 
 const isRootPath = location => location.pathname.match(rootPathRegex)
@@ -39,5 +42,11 @@ const Header = ({ location }) =>
       <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
     </H2>
   )
+
+Header.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 export default Header

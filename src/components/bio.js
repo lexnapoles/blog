@@ -1,9 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import get from 'lodash/get'
-
-// Import typefaces
-
 
 import { rhythm } from '../utils/typography'
 
@@ -20,26 +17,36 @@ const Image = styled.img`
   border-radius: ${rhythm(3)};
 `
 
-class Bio extends React.Component {
-  render() {
-    const {
-      node: { name, bio, twitter, github, image },
-    } = this.props.person
+const Bio = ({
+  person: {
+    node: { name, bio, twitter, github, image },
+  },
+}) => (
+  <Flex>
+    <Image src={image.file.url} alt={name} />
+    <p>
+      Written by <strong>{name}</strong>. {bio.bio}{' '}
+      <a href={twitter}>Twitter</a> <a href={github}>Github</a>
+    </p>
+  </Flex>
+)
 
-    return (
-      <Flex>
-        <Image
-          src={image.file.url}
-          alt={name}
-        />
-        <p>
-          Written by <strong>{name}</strong>. {bio.bio}{' '}
-          <a href={twitter}>Twitter</a>{' '}
-          <a href={github}>Github</a>
-        </p>
-      </Flex>
-    )
-  }
+Bio.propTypes = {
+  person: PropTypes.shape({
+    node: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      bio: PropTypes.shape({
+        bio: PropTypes.string.isRequired,
+      }),
+      twitter: PropTypes.string.isRequired,
+      github: PropTypes.string.isRequired,
+      image: PropTypes.shape({
+        file: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }),
+  }),
 }
 
 export default Bio
