@@ -68,7 +68,7 @@ BlogPostTemplate.propTypes = {
   pageContext: PropTypes.shape({
     previous: PropTypes.shape({
       slug: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     next: PropTypes.shape({
       slug: PropTypes.string.isRequired,
     }).isRequired,

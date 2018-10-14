@@ -65,7 +65,7 @@ Pagination.propTypes = {
   context: PropTypes.shape({
     numPages: PropTypes.number.isRequired,
     currentPage: PropTypes.number.isRequired,
-    slug: PropTypes.string.isRequired,
+    slug: PropTypes.string,
   }).isRequired,
 }
 

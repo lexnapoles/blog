@@ -37,10 +37,14 @@ const PostLinks = ({ previous, next }) => (
 PostLinks.propTypes = {
   previous: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   next: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,
+}
+
+PostLinks.defaultProps = {
+  previous: {},
 }
 
 export default PostLinks

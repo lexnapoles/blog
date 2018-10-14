@@ -1,4 +1,5 @@
 /* global __PATH_PREFIX__ */
+/* eslint-disable no-useless-escape */
 
 import React from 'react'
 import { Link } from 'gatsby'
@@ -29,7 +30,7 @@ const StyledLink = styled(Link)`
 `
 
 const rootPathRegex = new RegExp(
-  `^${__PATH_PREFIX__}/$|${__PATH_PREFIX__}/+\\d$|\\d/$`
+  `^${__PATH_PREFIX__}\/$|${__PATH_PREFIX__}\/+\\d$|${__PATH_PREFIX__}\/+\\d\/$`
 )
 
 const isRootPath = location => location.pathname.match(rootPathRegex)
