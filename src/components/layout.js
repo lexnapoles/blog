@@ -45,11 +45,7 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}\/`
     let header
     const rootPathRegex = new RegExp(`${rootPath}$|${rootPath}(.\d)\/$`, 'gi')
-    
 
-    console.log('rootPath', rootPath)
-    console.log('pathname', location.pathname)
-    console.log('match', location.pathname.match(rootPathRegex))
     if (location.pathname.match(rootPathRegex)) {
       header = <H1 style={{ ...scale }}>Alejandro Napoles</H1>
     } else {
