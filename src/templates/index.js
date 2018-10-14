@@ -3,8 +3,6 @@ import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import 'typeface-arvo'
-import 'typeface-cabin'
 
 import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'

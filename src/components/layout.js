@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import 'typeface-arvo'
+import 'typeface-cabin'
 
 import { rhythm, scale } from '../utils/typography'
 import License from './license'
