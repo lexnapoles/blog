@@ -70,14 +70,15 @@ exports.createPages = ({ graphql, actions }) => {
         })
 
         posts.forEach((post, i) => {
-          const prev = i === 0 ? null : posts[i - 1].node
+          const previous = i === 0 ? null : posts[i - 1].node
           const next = i === posts.length - 1 ? null : posts[i + 1].node
+
           createPage({
             path: `/${post.node.slug}/`,
             component: blogPost,
             context: {
               slug: post.node.slug,
-              prev,
+              previous,
               next,
             },
           })

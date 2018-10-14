@@ -9,6 +9,7 @@ import 'typeface-cabin'
 import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'
 import Pagination from '../components/pagination'
+import PostExcerpt from '../components/postExcerpt'
 
 const Title = styled.h3`
   margin-bottom: ${rhythm(1 / 4)};
@@ -18,61 +19,27 @@ const StyledLink = styled(Link)`
   box-shadow: none;
 `
 
-class BlogIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const siteDescription = get(
-      this,
-      'props.data.site.siteMetadata.description'
-    )
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+const BlogIndex = ({ data, pageContext, location }) => {
+  const siteTitle = get(data, 'site.siteMetadata.title')
+  const siteDescription = get(data, 'site.siteMetadata.description')
+  const posts = get(data, 'allContentfulBlogPost.edges')
+  const { currentPage } = pageContext
 
-    const pageContext = get(this, 'props.pageContext')
-    const { currentPage } = pageContext
-    const isFirstPage = currentPage === 1
+  const isFirstPage = currentPage === 1
 
-    return (
-      <Layout location={this.props.location}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={`${siteTitle} - Page ${currentPage}`}
-        />
-        {isFirstPage
-          ? posts
-            .slice(1)
-            .map(({ node: { slug, title, publishDate, excerpt } }) => (
-              <div key={slug}>
-                <Title>
-                  <StyledLink to={slug}>{title}</StyledLink>
-                </Title>
-                <small>{publishDate}</small>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: excerpt.childMarkdownRemark.html,
-                  }}
-                />
-              </div>
-            ))
-          : posts.map(({ node: { slug, title, publishDate, excerpt } }) => {
-            return (
-              <div key={slug}>
-                <Title>
-                  <StyledLink to={slug}>{title}</StyledLink>
-                </Title>
-                <small>{publishDate}</small>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: excerpt.childMarkdownRemark.html,
-                  }}
-                />
-              </div>
-            )
-          })}
-        <Pagination context={pageContext} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout location={location}>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        meta={[{ name: 'description', content: siteDescription }]}
+        title={`${siteTitle} - Page ${currentPage}`}
+      />
+      {isFirstPage
+        ? posts.slice(1).map(post => <PostExcerpt post={post} />)
+        : posts.map(post => <PostExcerpt post={post} />)}
+      <Pagination context={pageContext} />
+    </Layout>
+  )
 }
 
 export default BlogIndex

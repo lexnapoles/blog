@@ -7,6 +7,7 @@ import { DiscussionEmbed } from 'disqus-react'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
+import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
 
 const ListContainer = styled.ul`
@@ -28,61 +29,42 @@ const HR = styled.hr`
   margin: ${rhythm(2)} 0;
 `
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const siteDescription = get(
-      this.props,
-      'data.site.siteMetadata.description'
-    )
-    
-    const disqusShortname = 'alejandronapoles'
-    const disqusConfig = {
-      identifier: post.contentul_id,
-      title: post.title,
-    }
+const BlogPostTemplate = ({
+  data,
+  location,
+  pageContext: { previous, next },
+}) => {
+  const post = get(data, 'contentfulBlogPost')
+  const siteTitle = get(data, 'site.siteMetadata.title')
+  const siteDescription = get(data, 'site.siteMetadata.description')
+  const [author] = get(data, 'allContentfulPerson.edges')
 
-    const [author] = get(this.props, 'data.allContentfulPerson.edges')
-    const { previous, next } = this.props.pageContext
-
-    return (
-      <Layout location={this.props.location}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={`${post.title} | ${siteTitle}`}
-        />
-        <h1>{post.title}</h1>
-        <PublishDate>{post.publishDate}</PublishDate>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: post.body.childMarkdownRemark.html,
-          }}
-        />
-        <HR />
-        <Bio person={author} />
-        <ListContainer>
-          {previous && (
-            <li>
-              <Link to={previous.slug} rel="prev">
-                ← {previous.title}
-              </Link>
-            </li>
-          )}
-
-          {next && (
-            <li>
-              <Link to={next.slug} rel="next">
-                {next.title} →
-              </Link>
-            </li>
-          )}
-        </ListContainer>
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      </Layout>
-    )
+  const disqusShortname = 'alejandronapoles'
+  const disqusConfig = {
+    identifier: post.contentul_id,
+    title: post.title,
   }
+
+  return (
+    <Layout location={location}>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        meta={[{ name: 'description', content: siteDescription }]}
+        title={`${post.title} | ${siteTitle}`}
+      />
+      <h1>{post.title}</h1>
+      <PublishDate>{post.publishDate}</PublishDate>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: post.body.childMarkdownRemark.html,
+        }}
+      />
+      <HR />
+      <PostLinks previous={previous} next={next} />
+      <Bio person={author} />
+      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate
