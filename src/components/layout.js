@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-
 import { rhythm, scale } from '../utils/typography'
+import License from './license'
 
 const H1 = styled.h1`
   ${scale(1.5)};
@@ -55,6 +55,7 @@ class Template extends React.Component {
       <Container>
         {header}
         {children}
+        <License/>
       </Container>
     )
   }
