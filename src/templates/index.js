@@ -25,8 +25,6 @@ const BlogIndex = ({ data, pageContext, location }) => {
   const posts = get(data, 'allContentfulBlogPost.edges')
   const { currentPage } = pageContext
 
-  const isFirstPage = currentPage === 1
-
   return (
     <Layout location={location}>
       <Helmet
@@ -34,9 +32,9 @@ const BlogIndex = ({ data, pageContext, location }) => {
         meta={[{ name: 'description', content: siteDescription }]}
         title={`${siteTitle} - Page ${currentPage}`}
       />
-      {isFirstPage
-        ? posts.slice(1).map(post => <PostExcerpt post={post} />)
-        : posts.map(post => <PostExcerpt post={post} />)}
+      {posts.map(post => (
+        <PostExcerpt post={post} />
+      ))}
       <Pagination context={pageContext} />
     </Layout>
   )

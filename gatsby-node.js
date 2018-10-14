@@ -33,38 +33,22 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
-        
 
         // Create blog posts pages.
         const posts = result.data.allContentfulBlogPost.edges
-        const postsPerFirstPage = config.postsPerHomePage
         const postsPerPage = config.postsPerPage
-        const numPages = Math.ceil(
-          posts.slice(postsPerFirstPage).length / postsPerPage
-        )
-
-        // Create main home page
-        createPage({
-          path: `/`,
-          component: homePage,
-          context: {
-            limit: postsPerFirstPage,
-            skip: 0,
-            numPages: numPages + 1,
-            currentPage: 1,
-          },
-        })
+        const numPages = Math.ceil(posts.length / postsPerPage)
 
         // Create additional pagination on home page if needed
         Array.from({ length: numPages }).forEach((_, i) => {
           createPage({
-            path: `/${i + 2}/`,
+            path: i === 0 ? '/' : `/${i + 1}`,
             component: homePage,
             context: {
               limit: postsPerPage,
-              skip: i * postsPerPage + postsPerFirstPage,
-              numPages: numPages + 1,
-              currentPage: i + 2,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1,
             },
           })
         })
