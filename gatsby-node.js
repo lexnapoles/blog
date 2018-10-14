@@ -1,21 +1,28 @@
 const _ = require('lodash')
 const Promise = require('bluebird')
 const path = require('path')
+const config = require('./siteConfig')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
+    const homePage = path.resolve(`./src/templates/index.js`)
+
     resolve(
       graphql(
         `
           {
-            allContentfulBlogPost {
+            allContentfulBlogPost(
+              sort: { fields: [publishDate], order: DESC }
+              limit: 10000
+            ) {
               edges {
                 node {
                   title
                   slug
+                  publishDate
                 }
               }
             }
@@ -26,21 +33,51 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
+        
 
         // Create blog posts pages.
         const posts = result.data.allContentfulBlogPost.edges
+        const postsPerFirstPage = config.postsPerHomePage
+        const postsPerPage = config.postsPerPage
+        const numPages = Math.ceil(
+          posts.slice(postsPerFirstPage).length / postsPerPage
+        )
 
-        _.each(posts, (post, index) => {
-          const previous =
-            index === posts.length - 1 ? null : posts[index + 1].node
-          const next = index === 0 ? null : posts[index - 1].node
+        // Create main home page
+        createPage({
+          path: `/`,
+          component: homePage,
+          context: {
+            limit: postsPerFirstPage,
+            skip: 0,
+            numPages: numPages + 1,
+            currentPage: 1,
+          },
+        })
 
+        // Create additional pagination on home page if needed
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: `/${i + 2}/`,
+            component: homePage,
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage + postsPerFirstPage,
+              numPages: numPages + 1,
+              currentPage: i + 2,
+            },
+          })
+        })
+
+        posts.forEach((post, i) => {
+          const prev = i === 0 ? null : posts[i - 1].node
+          const next = i === posts.length - 1 ? null : posts[i + 1].node
           createPage({
             path: `/${post.node.slug}/`,
             component: blogPost,
             context: {
               slug: post.node.slug,
-              previous,
+              prev,
               next,
             },
           })
