@@ -31,7 +31,7 @@ const BlogIndex = ({ data, pageContext, location }) => {
         title={`${siteTitle} - Page ${currentPage}`}
       />
       {posts.map(post => (
-        <PostExcerpt post={post} />
+        <PostExcerpt key={post.node.slug} post={post} />
       ))}
       <Pagination context={pageContext} />
     </Layout>
