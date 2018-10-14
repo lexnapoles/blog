@@ -26,18 +26,21 @@ const StyledLink = styled(Link)`
 `
 
 const rootPathRegex = new RegExp(
-  `${__PATH_PREFIX__}\/$|${__PATH_PREFIX__}\/+\d$`
+  `^${__PATH_PREFIX__}\/$|${__PATH_PREFIX__}\/+\\d$|\\d/\$`
 )
 
 const isRootPath = location => location.pathname.match(rootPathRegex)
 
-const Header = ({ location }) =>
-  isRootPath(location) ? (
+const Header = ({ location }) => {
+  console.log(location.pathname)
+  console.log(isRootPath(location))
+ return isRootPath(location) ? (
     <H1>Alejandro Napoles</H1>
   ) : (
     <H2>
       <StyledLink to={'/'}>Alejandro Napoles</StyledLink>
     </H2>
   )
+}
 
 export default Header
