@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import get from 'lodash/get'
 import { DiscussionEmbed } from 'disqus-react'
+import Img from 'gatsby-image'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
@@ -20,6 +21,10 @@ const PublishDate = styled.p`
 
 const HR = styled.hr`
   margin: ${rhythm(2)} 0;
+`
+
+const HeroImage = styled(Img)`
+  margin-bottom: ${rhythm(2)};
 `
 
 const BlogPostTemplate = ({
@@ -47,6 +52,9 @@ const BlogPostTemplate = ({
       />
       <h1>{post.title}</h1>
       <PublishDate>{post.publishDate}</PublishDate>
+      {post.heroImage && (
+        <HeroImage fluid={post.heroImage.fluid} alt={post.heroImage.title} />
+      )}
       <div
         dangerouslySetInnerHTML={{
           __html: post.body.childMarkdownRemark.html,
@@ -92,6 +100,13 @@ export const pageQuery = graphql`
       body {
         childMarkdownRemark {
           html
+        }
+      }
+      heroImage {
+        id
+        title
+        fluid(maxWidth: 500) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
