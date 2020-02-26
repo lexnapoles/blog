@@ -1,20 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
 
 const Flex = styled.div`
   display: flex;
-  margin-bottom: ${rhythm(2.5)};
+  margin-bottom: ${rhythm(1)};
 `
 
-const Image = styled.img`
-  margin-right: ${rhythm(1)};
+const BioText = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+`
+
+const Image = styled(Img)`
+  margin-right: ${rhythm(0.5)};
   margin-bottom: 0;
-  width: ${rhythm(3)};
-  height: ${rhythm(3)};
-  border-radius: ${rhythm(3)};
+  border-radius: 50%;
+`
+
+const BioLinks = styled.span`
+  margin-top: -${rhythm(0.5)};
 `
 
 const Bio = ({
@@ -23,11 +32,15 @@ const Bio = ({
   },
 }) => (
   <Flex>
-    <Image src={image.file.url} alt={name} />
-    <p>
-      Written by <strong>{name}</strong>. {bio.bio}{' '}
-      <a href={twitter}>Twitter</a> <a href={github}>Github</a>
-    </p>
+    <Image fixed={image.fixed} alt={name} />
+    <BioText>
+      <p>
+        Written by <strong>{name}</strong>. {bio.bio}{' '}
+      </p>
+      <BioLinks>
+        <a href={twitter}>Twitter</a> <a href={github}>Github</a>
+      </BioLinks>
+    </BioText>
   </Flex>
 )
 
@@ -41,9 +54,8 @@ Bio.propTypes = {
       twitter: PropTypes.string.isRequired,
       github: PropTypes.string.isRequired,
       image: PropTypes.shape({
-        file: PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        }).isRequired,
+        id: PropTypes.string.isRequired,
+        fixed: PropTypes.shape({ srcWebp: PropTypes.string.isRequired }),
       }).isRequired,
     }),
   }),

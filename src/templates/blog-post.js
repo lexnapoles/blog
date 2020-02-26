@@ -105,8 +105,9 @@ export const pageQuery = graphql`
             bio
           }
           image {
-            file {
-              url
+            id
+            fixed(width: 65) {
+              ...GatsbyContentfulFixed_withWebp
             }
           }
           twitter
