@@ -2,11 +2,13 @@ export function twitterCard(post, authorTwitter) {
   const {
     heroImage,
     excerpt: { excerpt },
+    title,
   } = post
 
   const card = [
     { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:creator', content: authorTwitter },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:site', content: authorTwitter },
     ...twitterCardImage(heroImage),
     { name: 'twitter:description', content: excerpt },
   ]
