@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import get from 'lodash/get'
 import { DiscussionEmbed } from 'disqus-react'
-import Img from 'gatsby-image'
 import {
   LinkedinShareButton,
   RedditShareButton,
@@ -17,6 +16,8 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
+import HeroImage from './hero-image'
+import { twitterCard } from './meta'
 
 const SOCIAL_ICON_SIZE = 30
 const DISQUS_SHORTNAME = 'alejandronapoles'
@@ -31,10 +32,6 @@ const HR = styled.hr`
   margin: ${rhythm(2)} 0;
 `
 
-const HeroImage = styled(Img)`
-  margin-bottom: ${rhythm(2)};
-`
-
 const SocialLinks = styled.section`
   display: flex;
   justify-content: space-between;
@@ -47,30 +44,22 @@ const BlogPostTemplate = ({
   location,
   pageContext: { previous, next },
 }) => {
-  const post = get(data, 'contentfulBlogPost')
-  const { title: postTitle, heroImage } = post
+  const post = data.contentfulBlogPost
+  const { title: postTitle, body, publishDate } = post
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
   const authorTwitter = get(data, 'site.siteMetadata.userTwitter')
+  const [author] = data.allContentfulPerson.edges
 
-  const [author] = get(data, 'allContentfulPerson.edges')
   const url = location.href
   const disqusConfig = {
     identifier: post.contentul_id,
     title: postTitle,
   }
 
-  const twitterCard = [
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:creator', content: authorTwitter },
-    { name: 'twitter:image', content: heroImage.fluid.srcWebp },
-    { name: 'twitter:image:alt', content: heroImage.title },
-    { name: 'twitter:description', content: post.excerpt.excerpt },
-  ]
-
   const meta = [
     { name: 'description', content: siteDescription },
-    ...twitterCard,
+    ...twitterCard(post, authorTwitter),
   ]
 
   return (
@@ -81,7 +70,7 @@ const BlogPostTemplate = ({
         title={`${postTitle} | ${siteTitle}`}
       />
       <h1>{postTitle}</h1>
-      <PublishDate>{post.publishDate}</PublishDate>
+      <PublishDate>{publishDate}</PublishDate>
       <SocialLinks>
         <TwitterShareButton url={url} title={postTitle}>
           <TwitterIcon size={SOCIAL_ICON_SIZE} round />
@@ -93,12 +82,10 @@ const BlogPostTemplate = ({
           <RedditIcon size={SOCIAL_ICON_SIZE} round />
         </RedditShareButton>
       </SocialLinks>
-      {post.heroImage && (
-        <HeroImage fluid={heroImage.fluid} alt={heroImage.title} />
-      )}
+      <HeroImage post={post} />
       <div
         dangerouslySetInnerHTML={{
-          __html: post.body.childMarkdownRemark.html,
+          __html: body.childMarkdownRemark.html,
         }}
       />
       <HR />
