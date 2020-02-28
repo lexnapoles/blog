@@ -48,9 +48,11 @@ const BlogPostTemplate = ({
   pageContext: { previous, next },
 }) => {
   const post = get(data, 'contentfulBlogPost')
-  const { title: postTitle } = post
+  const { title: postTitle, heroImage } = post
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
+  const authorTwitter = get(data, 'site.siteMetadata.userTwitter')
+
   const [author] = get(data, 'allContentfulPerson.edges')
   const url = location.href
   const disqusConfig = {
@@ -58,11 +60,24 @@ const BlogPostTemplate = ({
     title: postTitle,
   }
 
+  const twitterCard = [
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:creator', content: authorTwitter },
+    { name: 'twitter:image', content: heroImage.fluid.srcWebp },
+    { name: 'twitter:image:alt', content: heroImage.title },
+    { name: 'twitter:description', content: post.excerpt.excerpt },
+  ]
+
+  const meta = [
+    { name: 'description', content: siteDescription },
+    ...twitterCard,
+  ]
+
   return (
     <Layout location={location}>
       <Helmet
         htmlAttributes={{ lang: 'en' }}
-        meta={[{ name: 'description', content: siteDescription }]}
+        meta={meta}
         title={`${postTitle} | ${siteTitle}`}
       />
       <h1>{postTitle}</h1>
@@ -79,7 +94,7 @@ const BlogPostTemplate = ({
         </RedditShareButton>
       </SocialLinks>
       {post.heroImage && (
-        <HeroImage fluid={post.heroImage.fluid} alt={post.heroImage.title} />
+        <HeroImage fluid={heroImage.fluid} alt={heroImage.title} />
       )}
       <div
         dangerouslySetInnerHTML={{
@@ -135,6 +150,9 @@ export const pageQuery = graphql`
         fluid(maxWidth: 500) {
           ...GatsbyContentfulFluid_withWebp
         }
+      }
+      excerpt {
+        excerpt
       }
     }
     allContentfulPerson(
