@@ -7,21 +7,22 @@ import get from 'lodash/get'
 import { DiscussionEmbed } from 'disqus-react'
 import Img from 'gatsby-image'
 import {
-  FacebookShareButton,
   LinkedinShareButton,
   RedditShareButton,
   TwitterShareButton,
 } from 'react-share'
+import { LinkedinIcon, RedditIcon, TwitterIcon } from 'react-share'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
 
+const SOCIAL_ICON_SIZE = 30
+
 const PublishDate = styled.p`
   ${scale(-1 / 5)};
   display: block;
-  margin-bottom: ${rhythm(1)};
   margin-top: ${rhythm(-0.5)};
 `
 
@@ -33,6 +34,13 @@ const HeroImage = styled(Img)`
   margin-bottom: ${rhythm(2)};
 `
 
+const SocialLinks = styled.section`
+  display: flex;
+  justify-content: space-between;
+  max-width: 100px;
+  margin-bottom: ${rhythm(0.5)};
+`
+
 const BlogPostTemplate = ({
   data,
   location,
@@ -42,8 +50,7 @@ const BlogPostTemplate = ({
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
   const [author] = get(data, 'allContentfulPerson.edges')
-  // eslint-disable-next-line no-console
-  console.log(data)
+  const url = location.href
   const disqusShortname = 'alejandronapoles'
   const disqusConfig = {
     identifier: post.contentul_id,
@@ -58,13 +65,18 @@ const BlogPostTemplate = ({
         title={`${post.title} | ${siteTitle}`}
       />
       <h1>{post.title}</h1>
-      <span>
-        <TwitterShareButton />
-        <LinkedinShareButton />
-        <FacebookShareButton />
-        <RedditShareButton />
-      </span>
       <PublishDate>{post.publishDate}</PublishDate>
+      <SocialLinks>
+        <TwitterShareButton url={url}>
+          <TwitterIcon size={SOCIAL_ICON_SIZE} round />
+        </TwitterShareButton>
+        <LinkedinShareButton url={url}>
+          <LinkedinIcon size={SOCIAL_ICON_SIZE} round />
+        </LinkedinShareButton>
+        <RedditShareButton url={url}>
+          <RedditIcon size={SOCIAL_ICON_SIZE} round />
+        </RedditShareButton>
+      </SocialLinks>
       {post.heroImage && (
         <HeroImage fluid={post.heroImage.fluid} alt={post.heroImage.title} />
       )}
@@ -85,6 +97,7 @@ BlogPostTemplate.propTypes = {
   data: PropTypes.objectOf(PropTypes.any),
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
   }).isRequired,
   pageContext: PropTypes.shape({
     previous: PropTypes.shape({

@@ -14,7 +14,7 @@ const Container = styled.div`
   }
 
   margin: 0 auto;
-  max-width: ${rhythm(24)};
+  max-width: ${rhythm(26)};
   padding: ${rhythm(1.5)};
 `
 
