@@ -6,6 +6,12 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import { DiscussionEmbed } from 'disqus-react'
 import Img from 'gatsby-image'
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+} from 'react-share'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
@@ -36,7 +42,8 @@ const BlogPostTemplate = ({
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
   const [author] = get(data, 'allContentfulPerson.edges')
-
+  // eslint-disable-next-line no-console
+  console.log(data)
   const disqusShortname = 'alejandronapoles'
   const disqusConfig = {
     identifier: post.contentul_id,
@@ -51,6 +58,12 @@ const BlogPostTemplate = ({
         title={`${post.title} | ${siteTitle}`}
       />
       <h1>{post.title}</h1>
+      <span>
+        <TwitterShareButton />
+        <LinkedinShareButton />
+        <FacebookShareButton />
+        <RedditShareButton />
+      </span>
       <PublishDate>{post.publishDate}</PublishDate>
       {post.heroImage && (
         <HeroImage fluid={post.heroImage.fluid} alt={post.heroImage.title} />
