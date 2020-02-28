@@ -19,6 +19,7 @@ import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
 
 const SOCIAL_ICON_SIZE = 30
+const DISQUS_SHORTNAME = 'alejandronapoles'
 
 const PublishDate = styled.p`
   ${scale(-1 / 5)};
@@ -47,14 +48,14 @@ const BlogPostTemplate = ({
   pageContext: { previous, next },
 }) => {
   const post = get(data, 'contentfulBlogPost')
+  const { title: postTitle } = post
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
   const [author] = get(data, 'allContentfulPerson.edges')
   const url = location.href
-  const disqusShortname = 'alejandronapoles'
   const disqusConfig = {
     identifier: post.contentul_id,
-    title: post.title,
+    title: postTitle,
   }
 
   return (
@@ -62,18 +63,18 @@ const BlogPostTemplate = ({
       <Helmet
         htmlAttributes={{ lang: 'en' }}
         meta={[{ name: 'description', content: siteDescription }]}
-        title={`${post.title} | ${siteTitle}`}
+        title={`${postTitle} | ${siteTitle}`}
       />
-      <h1>{post.title}</h1>
+      <h1>{postTitle}</h1>
       <PublishDate>{post.publishDate}</PublishDate>
       <SocialLinks>
-        <TwitterShareButton url={url}>
+        <TwitterShareButton url={url} title={postTitle}>
           <TwitterIcon size={SOCIAL_ICON_SIZE} round />
         </TwitterShareButton>
-        <LinkedinShareButton url={url}>
+        <LinkedinShareButton url={url} title={postTitle}>
           <LinkedinIcon size={SOCIAL_ICON_SIZE} round />
         </LinkedinShareButton>
-        <RedditShareButton url={url}>
+        <RedditShareButton url={url} title={postTitle}>
           <RedditIcon size={SOCIAL_ICON_SIZE} round />
         </RedditShareButton>
       </SocialLinks>
@@ -88,7 +89,7 @@ const BlogPostTemplate = ({
       <HR />
       <PostLinks previous={previous} next={next} />
       <Bio person={author} />
-      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      <DiscussionEmbed shortname={DISQUS_SHORTNAME} config={disqusConfig} />
     </Layout>
   )
 }
