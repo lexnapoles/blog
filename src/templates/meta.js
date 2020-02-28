@@ -19,7 +19,7 @@ export function twitterCard(post, authorTwitter) {
 function twitterCardImage(image) {
   return image
     ? [
-        { name: 'twitter:image', content: image.fluid.srcWebp },
+        { name: 'twitter:image', content: `https:${image.fluid.srcWebp}` },
         { name: 'twitter:image:alt', content: image.title },
       ]
     : []
