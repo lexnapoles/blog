@@ -11,6 +11,7 @@ import PostExcerpt from '../components/postExcerpt'
 const BlogIndex = ({ data, pageContext, location }) => {
   const siteTitle = get(data, 'site.siteMetadata.title')
   const siteDescription = get(data, 'site.siteMetadata.description')
+
   const posts = get(data, 'allContentfulBlogPost.edges')
   const { currentPage } = pageContext
 
@@ -18,7 +19,24 @@ const BlogIndex = ({ data, pageContext, location }) => {
     <Layout location={location}>
       <Helmet
         htmlAttributes={{ lang: 'en' }}
-        meta={[{ name: 'description', content: siteDescription }]}
+        meta={[
+          {
+            name: `description`,
+            content: siteDescription,
+          },
+          {
+            property: `og:title`,
+            content: siteTitle,
+          },
+          {
+            property: `og:description`,
+            content: siteDescription,
+          },
+          {
+            property: `og:type`,
+            content: `website`,
+          },
+        ]}
         title={`${siteTitle} - Page ${currentPage}`}
       />
       {posts.map(post => (
