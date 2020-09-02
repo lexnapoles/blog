@@ -166,5 +166,11 @@ module.exports = {
     'gatsby-plugin-nprogress',
     'gatsby-plugin-netlify',
     'gatsby-plugin-eslint',
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://alejandronapoles.com`,
+      },
+    },
   ],
 }
