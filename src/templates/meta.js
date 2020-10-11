@@ -34,10 +34,10 @@ export function openGraphCard(post, url) {
   } = post
 
   const card = [
-    { name: 'og:title', content: title },
-    { name: 'og:description', content: excerpt },
+    { name: 'title', property: 'og:title', content: title },
+    { name: 'description', property: 'og:description', content: excerpt },
     { name: 'og:url', content: url },
-    { name: 'og:author', content: author },
+    { name: 'author', content: author },
     ...linkedInCardImage(heroImage),
   ]
 
@@ -46,6 +46,12 @@ export function openGraphCard(post, url) {
 
 function linkedInCardImage(image) {
   return image
-    ? [{ name: 'og:image', content: `https:${image.fluid.srcWebp}` }]
+    ? [
+        {
+          name: 'image',
+          property: 'og:image',
+          content: `https:${image.fluid.srcWebp}`,
+        },
+      ]
     : []
 }
