@@ -24,3 +24,28 @@ function twitterCardImage(image) {
       ]
     : []
 }
+
+export function openGraphCard(post, url) {
+  const {
+    heroImage,
+    excerpt: { excerpt },
+    title,
+    author: { name: author },
+  } = post
+
+  const card = [
+    { name: 'og:title', content: title },
+    { name: 'og:description', content: excerpt },
+    { name: 'og:url', content: url },
+    { name: 'og:author', content: author },
+    ...linkedInCardImage(heroImage),
+  ]
+
+  return card
+}
+
+function linkedInCardImage(image) {
+  return image
+    ? [{ name: 'og:image', content: `https:${image.fluid.srcWebp}` }]
+    : []
+}

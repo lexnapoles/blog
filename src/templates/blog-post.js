@@ -17,7 +17,7 @@ import Layout from '../components/layout'
 import PostLinks from '../components/postLinks'
 import { rhythm, scale } from '../utils/typography'
 import HeroImage from './hero-image'
-import { twitterCard } from './meta'
+import { twitterCard, openGraphCard } from './meta'
 
 const SOCIAL_ICON_SIZE = 30
 const DISQUS_SHORTNAME = 'alejandronapoles'
@@ -72,6 +72,7 @@ const BlogPostTemplate = ({
       content: `website`,
     },
     ...twitterCard(post, authorTwitter),
+    ...openGraphCard(post, url),
   ]
 
   return (
@@ -142,6 +143,9 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      author {
+        name
       }
       heroImage {
         id
