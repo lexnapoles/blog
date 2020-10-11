@@ -59,18 +59,6 @@ const BlogPostTemplate = ({
 
   const meta = [
     { name: 'description', content: siteDescription },
-    {
-      property: `og:title`,
-      content: siteTitle,
-    },
-    {
-      property: `og:description`,
-      content: siteDescription,
-    },
-    {
-      property: `og:type`,
-      content: `website`,
-    },
     ...twitterCard(post, authorTwitter),
     ...openGraphCard(post, url),
   ]
