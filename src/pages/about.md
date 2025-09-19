@@ -1,9 +1,17 @@
-Welcome to this blog template by [cassidoo](https://cassidoo.co)!
+Welcome! I'm Alejandro, a Spanish software developer based in London with 7+ years of experience.
 
-It's using Astro and TinaCMS. You can [clone it on GitHub](https://github.com/cassidoo/blahg) to use it for yourself, and see how it works! I would _love_ if you told me when you do use it, I love seeing variations on it!
+I consider myself a curious, eclectic person. If one thing could be said about me is that I'm passionate about learning. My interests are all over the place: product management, software architecture, system thinking, agile, DevOps, leadership, culture, entrepreneurship…
 
-The tags at the bottom of the page are dynamically generated. The more tags you use, the more tags are added to the list! Posts are simple markdown files.
+Besides professional interests, I love music, video games, reading books and comics and training for strength and health, there has to be a balance between mind and body.
 
-You should also check out [my newsletter](https://cassidoo.co/newsletter) or my [GitHub profile](https://github.com/cassidoo). Or don't. Follow your dreams.
+I believe that creating products and developing software is as much of a technical endeavour as it is intrinsically social and human. At the same time, I had the immense luck of working with many teams and experienced different ways of working and domains. Some teams had modern practices (Extreme Programming, DevOps) that impacted my understanding of what software development could be.
 
-Enjoy!
+
+You should also check out [my newsletter](https://alejandronapoles.com/newsletter)
+
+## Fun facts
+
+    Some of my favourite games: Grim Fandango 💀, Chrono Trigger ⌛, KOTOR 🌌🔫, Pokémon, Halo.
+    A touching album 🎹: The Köln Concert.
+    Favourite book: Journey to the West 🐒.
+    The last film I loved: Everything Everywhere All at Once.
