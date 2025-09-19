@@ -9,9 +9,3 @@ I believe that creating products and developing software is as much of a technic
 
 You should also check out [my newsletter](https://alejandronapoles.com/newsletter)
 
-## Fun facts
-
-    Some of my favourite games: Grim Fandango 💀, Chrono Trigger ⌛, KOTOR 🌌🔫, Pokémon, Halo.
-    A touching album 🎹: The Köln Concert.
-    Favourite book: Journey to the West 🐒.
-    The last film I loved: Everything Everywhere All at Once.
