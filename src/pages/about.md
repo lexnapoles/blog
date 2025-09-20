@@ -7,5 +7,5 @@ Besides professional interests, I love music, video games, reading books and com
 I believe that creating products and developing software is as much of a technical endeavour as it is intrinsically social and human. At the same time, I had the immense luck of working with many teams and experienced different ways of working and domains. Some teams had modern practices (Extreme Programming, DevOps) that impacted my understanding of what software development could be.
 
 
-You should also check out [my newsletter](https://alejandronapoles.com/newsletter).
+You should also check out [my newsletter](https://buttondown.com/lexnapoles).
 
