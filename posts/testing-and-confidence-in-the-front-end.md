@@ -135,7 +135,7 @@ A sign that a test might not be testing behaviour is that, every time we change 
 
 When testing, it can be tempting to start asserting what third-party libraries will do, or how the browser will behave.
 
-Let the browser do what it does, and focus on what your code’s doing. As a simple example, if you’re asserting that the browser, when a user clicks on an a tag, they get redirected to a specific URL, you might be doing more than you should. If you care about the URL being correct, you can test your custom logic that builds it, or the href in the tag. If you have stuff that reacts to the URL change and want to verify that it works, test that.
+Let the browser do what it does, and focus on what your code’s doing. As a simple example, if you’re asserting that the browser, when a user clicks on an \`a\` tag, they get redirected to a specific URL, you might be doing more than you should. If you care about the URL being correct, you can test your custom logic that builds it, or the href in the tag. If you have stuff that reacts to the URL change and want to verify that it works, test that.
 
 The same principle applies to third-party libraries or systems. Don’t reach into the library to test how it behaves, test your code which will interact with the library.
 
