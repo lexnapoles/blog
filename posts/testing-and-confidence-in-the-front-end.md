@@ -65,7 +65,7 @@ If you were to push a code change straight to production, how would you feel? Ho
 
 The feeling of pushing changes without fear and frequently to production, any time of the week, getting fast feedback and observing how it behaves live, it’s priceless. We’re quick but under control, balanced.
 
-When thinking about testing, I'd like to echo a Dan North's thought-provoking article, "[We need to talk about testing](https://dannorth.net/we-need-to-talk-about-testing/)", where testing is described as the following:
+When thinking about testing, I'd like to echo a Dan North's thought-provoking article, “[We need to talk about testing](https://dannorth.net/we-need-to-talk-about-testing/)”, where testing is described as the following:
 
 > The purpose of testing is to **increase confidence** for **stakeholders** through **evidence**.You are testing **if and only if** you are increasing confidence for stakeholders through evidence.
 
@@ -73,11 +73,9 @@ From the definition, it follows that automated tests are not all there is testin
 
 ## Automated tests
 
-<figure><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/7bacd6a8-7629-4158-a383-98608f27695c/image.png?w=960&amp;fit=max" alt="A pyramid divided in three sections, from the bottom to the top: unit, integration, e2e. At the side of the pyramid, three arrows going up. First arrow, indicates that as we go up in the pyramid tests get more expensive, second arrow indicates that as we go up we get more ROI and closer to the user, and third arrow indicates that as we go up in the pyramid tests get slower" width="630" draggable="false"><figcaption>Typical testing pyramid</figcaption></figure>
-
 At some point in a developer's life, we've all seen this type of picture about tests, sometimes it's a pyramid, sometimes a blob, a honeycomb, or a [trophy](https://kentcdodds.com/blog/write-tests). Regardless of the shape, the general idea is that the closer we get to the user and to the real thing, the better the assurance that things work, but the slower, costly and flaky the tests are. These images are used to indicate the amount of effort we should dedicate to each test.
 
-Looking at the trade-offs, integration tests give the most Return on Investment, as they’re in the sweet spot between cost, speed, and confidence. In the pyramid above, I made the integration tests area bigger (a la testing trophy), as to indicate that we might want to prioritise these tests given the ROI.
+Looking at the trade-offs, integration tests give the most Return on Investment, as they’re in the sweet spot between cost, speed, and confidence. In the pyramid above, I made the integration tests area bigger (a la testing trophy), as to indicate that we might want to prioritize these tests given the ROI.
 
 ### The uncertain nature of words like unit and integration
 
@@ -87,19 +85,17 @@ Some writers argue that the pyramid isn't a good test distribution, preferring m
 
 Things get fuzzy when we use words like unit and integration. In many conversations I’ve had with teammates about tests, we were rarely aligned on what a unit or integration test were.
 
-Everyone kind of agrees that an integration test involves testing the integration between things (and, specially, if it's testing the interaction between systems), but, when does a unit test become an integration test, where’s the boundary? Is a unit test only about testing one single thing in isolation? If it isn’t, how many more “units” it needs to level up to an integration test? Some devs call certain types of tests—specially if you think about some front-end tests—integration tests, while others would say that those tests are just chunky unit tests.
+Everyone agrees that an integration test involves testing the integration between things (and, specially, if it's testing the interaction between systems), but, when does a unit test become an integration test, where’s the boundary? Is a unit test only about testing one single thing in isolation? If it isn’t, how many more “units” it needs to level up to an integration test? Some devs call certain types of tests—specially if you think about some front-end tests—integration tests, while others would say that those tests are just chunky unit tests.
 
 I’d rather bypass these questions, avoid giving a definition for the words or debating what the definitions are, spending hours debating the percentage of tests we should do, as I agree with Justin Searls when he [writes](https://x.com/searls/status/1393385209089990659):
 
 > People love debating what percentage of which type of tests to write, but it's a distraction. Nearly zero teams write expressive tests that establish clear boundaries, run quickly & reliably, and only fail for useful reasons. Focus on that instead.
 
-At this point, I would be remiss if I didn't mention Martin Fowler's article "[On the Diverse And Fantastical Shapes of Testing](https://martinfowler.com/articles/2021-test-shapes.html)", which clearly has influenced my thoughts on this matter. It does a better job at discussing the different shapes of testing and words like unit and integration.
+At this point, I would be remiss if I didn't mention Martin Fowler's article “[On the Diverse And Fantastical Shapes of Testing](https://martinfowler.com/articles/2021-test-shapes.html)”, which clearly has influenced my thoughts on this matter. It does a better job at discussing the different shapes of testing and words like unit and integration.
 
 Instead of thinking of where the boundary between a unit and an integration test is, I like to think about it in terms of sociable and solitary tests (see [Working Effectively with Unit Tests](https://leanpub.com/wewut) by Jay Fields):
 
 ![A pyramid divided in three sections, from the bottom to the top: unit, integration, e2e. At the side of the pyramid, three arrows going up. First arrow, indicates that as we go up in the pyramid tests get more expensive, second arrow indicates that as we go up we get more ROI and closer to the user, and third arrow indicates that as we go up in the pyramid tests get slower](/assets/typical-testing-pyramid.png)
-
-<img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/64761955-a55e-46f7-aadf-438fa3ff6692/image.png?t=1719560437" alt="On the left, the picture shows sociable tests as a brown box (the unit under test) connected to two other brown boxes (units). Below it says &quot;often the tested unit relies on units to fulfill its behavior&quot; On the right, the picture shows solitary tests as a box (the unit under test) that connects to two boxes that are transparent and with only dotted outlines, that act as test doubles for the real units. Below it says: &quot;some unit testers prefer to isolate the tested unit&quot;" width="630" draggable="false">
 
 As an end to this section, I find it interesting to go back and try to understand what the different kinds of tests are and their origin. I’m not going to write about it here too much, but will share a few articles by Martin Fowler in case you are, like me, curious about it:
 
@@ -110,7 +106,7 @@ As an end to this section, I find it interesting to go back and try to understan
 
 From these articles, I infer that the testing shapes and people arguing for more integration tests over unit tests or vice versa in the front-end, are not that far off from one another.
 
-Within the same system, we could consider integration tests unit tests and be done with it. Based on the test pyramid (including the one at the very top), we want to spend more effort writing unit tests. Sometimes the unit tests will be sociable or solitary, chunkier or leaner, but if we write good tests, as James Searls described, we’ll be in a good direction. So, when I wrote that “integration tests give the most Return on Investment, as they’re in the sweet spot between cost, speed, and confidence”, you can replace “integration tests” with “unit tests” (but chunkier, sociable in the front end) and now the pyramid has a heavy unit tests base, a thinner layer of integration tests and an even thinner end-to-end layer at the top. In fact, I’ll be using this adapted understanding starting the next section.
+Within the same system, we could consider integration tests unit tests and be done with it. Based on the test pyramid (including the one at the very top), we want to spend more effort writing unit tests. Every so often the unit tests will be sociable or solitary, chunkier or leaner, but if we write good tests, as James Searls described, we’ll be in a good direction. So, when I wrote that “integration tests give the most Return on Investment, as they’re in the sweet spot between cost, speed, and confidence”, you can replace “integration tests” with “unit tests” (but chunkier, sociable in the front end) and now the pyramid has a heavy unit tests base, a thinner layer of integration tests and an even thinner end-to-end layer at the top. In fact, I’ll be using this adapted understanding starting the next section.
 
 ## Testing recommendations
 
@@ -134,7 +130,7 @@ A sign that a test might not be testing behaviour is that, every time we change 
 
 When testing, it can be tempting to start asserting what third-party libraries will do, or how the browser will behave.
 
-Let the browser do what it does, and focus on what your code’s doing. As a simple example, if you’re asserting that the browser, when a user clicks on a <a> tag, they get redirected to a specific URL, you might be doing more than you should. If you care about the URL being correct, you can test your custom logic that builds it, or the href in the tag. If you have stuff that reacts to the URL change and want to verify that it works, test that.
+Let the browser do what it does, and focus on what your code’s doing. As a simple example, if you’re asserting that the browser, when a user clicks on an a tag, they get redirected to a specific URL, you might be doing more than you should. If you care about the URL being correct, you can test your custom logic that builds it, or the href in the tag. If you have stuff that reacts to the URL change and want to verify that it works, test that.
 
 The same principle applies to third-party libraries or systems. Don’t reach into the library to test how it behaves, test your code which will interact with the library.
 
@@ -148,7 +144,7 @@ It means that, on one hand, for example, I’ll mock the network with a library 
 
 ### Don’t worry about test coverage
 
-To pursue increasing the test coverage percentage won’t make the quality higher, you’ll just end up spending effort writing tests that give little to no confidence. Throw the metric away and prioritise writing tests that check behaviour and that are “expressive, that establish clear boundaries, run quickly & reliably, and only fail for useful reasons”.
+To pursue increasing the test coverage percentage won’t make the quality higher, you’ll just end up spending effort writing tests that give little to no confidence. Throw the metric away and prioritize writing tests that check behaviour and that are “expressive, that establish clear boundaries, run quickly & reliably, and only fail for useful reasons”.
 
 ### When the test fails, it provides useful information
 
@@ -171,11 +167,3 @@ In that situation, what I recommend is to focus on moving tests “down the pyra
 Another reason teams resort to end-to-end tests is to test that the interaction between the back-end and front-end works as expected, and that given a request from a client, the backend will respond in a certain way. For that reason, I’ve seen (and written in the past) end-to-end tests that assert that the request or the response have a specific shape or certain data. If we add end-to-end tests to check that the systems have a shared understanding of expectations, which is, again, expensive, slow and brittle, we can move them “down the pyramid” and turn them into contract tests, that are cheaper and faster.
 
 There’s usually no need to have a massive suite of end-to-end tests for confidence if you have a good mix of unit, integration, and contract tests.
-
-***
-
-# Interesting links
-
-* [Testers: Get Out of the Quality Assurance Business](https://developsense.com/blog/2010/05/testers-get-out-of-the-quality-assurance-business) (Michael Bolton)
-* [A "Democratized" Job Is Easy For AI To Take](https://rbefored.com/a-democratized-job-is-easy-for-ai-to-take-da7be74cd837) (Debbie Levitt)
-* [A Hallucinogenic Compendium](https://cyberneticforests.substack.com/p/a-hallucinogenic-compendium) (Eryk Salvaggio). "The outcomes of Large Language Models are not designed to be true — they are merely designed to be statistically likely. So now, a company with a serious commitment to AI has to figure out how to constrain these errors of truth for a model that was never designed for its outcomes to align with truth in any way."
