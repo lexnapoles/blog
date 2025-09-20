@@ -56,7 +56,9 @@ If the team is an enabling one, then it would be composed of specialists in a gi
 
 If the team is a platform team, its members would be knowledgeable of whatever technologies the platform offers, though, as we see in the book, the Thinnest Viable Platform (TVP) could even just be a wiki page:
 
-> This TVP could be just a wiki page if that's all you need for your platform - it says we use this cloud provider and we only use these services from a cloud provider and here's the way we use them — Matthew Skelton
+> This TVP could be just a wiki page if that's all you need for your platform - it says we use this cloud provider and we only use these services from a cloud provider and here's the way we use them \
+> \
+> — Matthew Skelton
 
 If the platform team is abstracting cloud providers, we'd need an engineer familiar with, among other things, cloud-native and the cloud provider. If another platform team is providing a compelling internal product in another area, then the team members are familiar with that area.
 
