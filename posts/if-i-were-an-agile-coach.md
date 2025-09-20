@@ -2,8 +2,8 @@
 title: If I were an agile coach
 slug: if-i-were-an-agile-coach
 description: >-
-  Why I'd throw out the playbook and start with actual human problems instead. 
-  Build trust and focus on delivering real value
+  Why I'd throw out the playbook and start with actual human problems, building
+  trust and focusing on delivering real value.
 tags: []
 added: 2024-06-13T23:00:00.000Z
 ---
