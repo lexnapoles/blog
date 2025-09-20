@@ -62,7 +62,7 @@ An example of reducing friction is simplifying async state management. Lots of c
 
 ## Confidence
 
-Confidence in our code is paramount, I don't mean it in the narrow sense of just looking at the code and thinking that's good, or writing a simple automated test and moving on. Confidence goes beyond the code and the developer, it includes reducing uncertainty, driving out fear, reducing feedback loops—as mentioned in [part one](https://buttondown.email/lexnapoles/archive/en-60-testing-and-confidence-in-the-front-end-i-9606/)—and understanding the impact of the code on the people that'll use it.
+Confidence in our code is paramount, I don't mean it in the narrow sense of just looking at the code and thinking that's good, or writing a simple automated test and moving on. Confidence goes beyond the code and the developer, it includes reducing uncertainty, driving out fear, reducing feedback loops, and understanding the impact of the code on the people that'll use it.
 
 If you were to push a code change straight to production, how would you feel? How you feel at that moment is tied to safety and confidence. Does the code behave the way it should? Will it break production or introduce bugs the second it’s live? How would I even know if something has gone wrong, do I have to wait for a customer to report it three months later? When things go wrong, do I have the proper support? Fear creeps if we don’t have a way to answer these questions and get fast feedback. If it hurts, we should bring the pain forward and do it more often.
 
