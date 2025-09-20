@@ -10,7 +10,7 @@ added: 2018-10-13T23:00:00.000Z
 
 In the second and final chapter of this journey, we'll see how to secure Nginx and add SSH, install Node and discover how to have our application start automatically even if the server restarts.
 
-In the [first part of this journey](https://alejandronapoles.com/deploying-node-applications-in-a-centos-server-i) of configuring a Centos Server to deploy the blog and other Node applications, we did all the things we needed to do to have the server up and running in a secure way. Among other things, we configured the firewall, SSH and we modified the sshd\_config to disable password authentication, we set up Nginx with the h5bp config as a template for our own configuration. The last things we need to do are:
+In the [first part of this journey](https://alejandronapoles.com/blog/deploying-node-applications-in-a-centos-server-i) of configuring a Centos Server to deploy the blog and other Node applications, we did all the things we needed to do to have the server up and running in a secure way. Among other things, we configured the firewall, SSH and we modified the sshd\_config to disable password authentication, we set up Nginx with the h5bp config as a template for our own configuration. The last things we need to do are:
 
 * Secure Nginx and SSH.
 * Install Node.
