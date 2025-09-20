@@ -5,7 +5,7 @@ description: >-
   Developers shouldn't wait for permission to care about quality, it's part of
   the job.
 tags: []
-added: 2025-09-20T16:39:59.539Z
+added: 2024-04-04T23:00:00.000Z
 ---
 
 Recently, a developer was telling me that the system was unreliable, and that bugs were always appearing in production after every feature. Moreover, no observability. The business needed the features as soon as possible, they were cutting corners left and right to get it done. Speed was of the utmost importance. At least they were doing manual testing to get some confidence, but it wasn’t enough and rework was high. The story continued with them saying that finally the business was letting them do automated testing and was on board with carving some time to improve the system—but not too much.
