@@ -13,7 +13,7 @@ added: 2018-10-12T23:00:00.000Z
 Let's make the DevEx easier by not avoiding restarting the server every time we want to see our changes.
 Webpack Middleware and Hot Module Replacement
 
-In [the last article](https://alejandronapoles.com/posts/simple-production-environment-with-webpack-and-express), we configured a simple Express server, Webpack and also automated the build. To make the development workflow easier, we can use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [HMR](https://github.com/glenjamin/webpack-hot-middleware). As it is explained on the webpack-dev-middleware Github's page, this middleware has a few advantages over our initial approach, in which we were executing a script to generate the bundled files with Webpack and then initiate the server:
+In [the last article](https://alejandronapoles.com/post/simple-production-environment-with-webpack-and-express), we configured a simple Express server, Webpack and also automated the build. To make the development workflow easier, we can use [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [HMR](https://github.com/glenjamin/webpack-hot-middleware). As it is explained on the webpack-dev-middleware Github's page, this middleware has a few advantages over our initial approach, in which we were executing a script to generate the bundled files with Webpack and then initiate the server:
 
 * No files are written to disk, it handles the files in memory.
 * If files changed in watch mode, the middleware no longer serves the old bundle, but delays requests until the compiling have finished. You don't have to wait before refreshing the page after a file modification.
