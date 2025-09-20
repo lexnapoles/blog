@@ -73,6 +73,8 @@ From the definition, it follows that automated tests are not all there is testin
 
 ## Automated tests
 
+![A pyramid divided in three sections, from the bottom to the top: unit, integration, e2e. At the side of the pyramid, three arrows going up. First arrow, indicates that as we go up in the pyramid tests get more expensive, second arrow indicates that as we go up we get more ROI and closer to the user, and third arrow indicates that as we go up in the pyramid tests get slower](/assets/typical-testing-pyramid.png)
+
 At some point in a developer's life, we've all seen this type of picture about tests, sometimes it's a pyramid, sometimes a blob, a honeycomb, or a [trophy](https://kentcdodds.com/blog/write-tests). Regardless of the shape, the general idea is that the closer we get to the user and to the real thing, the better the assurance that things work, but the slower, costly and flaky the tests are. These images are used to indicate the amount of effort we should dedicate to each test.
 
 Looking at the trade-offs, integration tests give the most Return on Investment, as they’re in the sweet spot between cost, speed, and confidence. In the pyramid above, I made the integration tests area bigger (a la testing trophy), as to indicate that we might want to prioritize these tests given the ROI.
@@ -95,7 +97,7 @@ At this point, I would be remiss if I didn't mention Martin Fowler's article “
 
 Instead of thinking of where the boundary between a unit and an integration test is, I like to think about it in terms of sociable and solitary tests (see [Working Effectively with Unit Tests](https://leanpub.com/wewut) by Jay Fields):
 
-![A pyramid divided in three sections, from the bottom to the top: unit, integration, e2e. At the side of the pyramid, three arrows going up. First arrow, indicates that as we go up in the pyramid tests get more expensive, second arrow indicates that as we go up we get more ROI and closer to the user, and third arrow indicates that as we go up in the pyramid tests get slower](/assets/typical-testing-pyramid.png)
+![On the left, the picture shows sociable tests as a brown box (the unit under test) connected to two other brown boxes (units). Below it says often the tested unit relies on units to fulfill its behavior; On the right, the picture shows solitary tests as a box (the unit under test) that connects to two boxes that are transparent and with only dotted outlines, that act as test doubles for the real units. Below it says: some unit testers prefer to isolate the tested unit](</assets/sociable and solitary tests.png>)
 
 As an end to this section, I find it interesting to go back and try to understand what the different kinds of tests are and their origin. I’m not going to write about it here too much, but will share a few articles by Martin Fowler in case you are, like me, curious about it:
 
