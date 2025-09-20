@@ -26,7 +26,7 @@ We can take this risk-averse mindset and push it to absurdity: why don't we bloc
 
 As Charity Majors writes in “[Deploys: It's not actually about Fridays](https://charity.wtf/2019/10/28/deploys-its-not-actually-about-fridays/)”:
 
-> My entire point is that the behaviors and practices associated with blocking Friday deploys are in fact **hurting your engineers.**\\
+> My entire point is that the behaviors and practices associated with blocking Friday deploys are in fact **hurting your engineers.**
 
 [If it hurts, do it more often](https://www.martinfowler.com/bliki/FrequencyReducesDifficulty.html). If you fear deploying on Fridays, the solution is not to run away from it. The fear's telling you your system's flaky or risky, failure can happen **any day**. Take the fear and act on it by improving, your whole system will be better, more reliable and humane—and your weekends will be more enjoyable.
 
