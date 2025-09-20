@@ -9,7 +9,7 @@ tags: []
 added: 2020-11-21T00:00:00.000Z
 ---
 
-A lot of the problems of your team and the company would be solved if you would just get good, and step up your game. You know this Kubernetes thing the cool kids are talking about? This simple technology can be mastered in one day and, honestly, every developer should know it. We expect you to create and configure from scratch services, and deploy to production with a full understanding of your cloud service of choice. Do you say your team is aligned to a flow of work? No worries mate, I'm letting you in on a little secret: you just need to get good. I'll lend you a hand, there you go, the cloud-native landscape:
+A lot of the problems of your team and the company would be solved if you would just get good, and step up your game. You know this Kubernetes thing the cool kids are talking about? This simple technology can be mastered in one day and, honestly, every developer should know it. We expect you to create and configure from scratch services, and deploy to production with a full understanding of your cloud service of choice. Do you say your team is aligned to a flow of work? No worries, mate, I'm letting you in on a little secret: you just need to get good. I'll lend you a hand, there you go, the cloud-native landscape:
 
 ![Cloud Native landscape, it shows all the zillion technologies in the space](/assets/devops-massive-map-of-tech.png)
 
