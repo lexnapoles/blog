@@ -68,4 +68,4 @@ Looking into the DevOps philosophy, calling someone a DevOps engineer or having 
 
 Don't get me wrong, engineers with operations/infrastructure skills are more important than ever, especially with cloud-native, and the "APIfication" of the infrastructure and the explosion of tools.
 
-The reality is that the term "DevOps engineer" is here to stay. Let's remember that the benefits we want don't just come from hiring engineers with these titles or changing the name of a team to "DevOps team" and, boom, transformation done, but from transforming ourselves into the people, teams and organisations that embrace the three ways.
+The reality is that the term “DevOps engineer” is here to stay. Let's remember that the benefits we want don't just come from hiring engineers with these titles or changing the name of a team to “DevOps team” and, boom, transformation done, but from transforming ourselves into the people, teams, and organisations that embrace the three ways.
