@@ -12,7 +12,7 @@ It's that time of the year. On X, the crusade about whether you should or should
 
 > Not deploying on Friday is a huge red flag, indicating a seriously broken process—insufficient testing, for example, a lack of continuous integration and waterfall thinking (deploy many times throughout dev), and most importantly, no culture of quality. Fix all that.\
 > \
-> — Allen Holub: [https://x.com/allenholub/status/1637111242610610182](https://x.com/allenholub/status/1637111242610610182)
+> — Allen Holub: [https://x.com/allenholub/status/1637111242610610182](https://x.com/allenholub/status/1637111242610610182)\\
 
 What's the truth behind deploying on Fridays, is it worth it, is it a gate to hell?
 
