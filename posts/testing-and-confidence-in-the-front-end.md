@@ -1,6 +1,9 @@
 ---
 title: Testing and confidence in the front-end
 slug: testing-and-confidence-in-the-front-end
+description: >-
+  Rethinking frontend testing: from obsessing over test types to focusing on
+  user behavior and meaningful evidence.
 tags: []
 added: 2025-09-20T15:19:07.554Z
 ---
