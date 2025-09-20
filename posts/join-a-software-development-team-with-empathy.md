@@ -5,7 +5,7 @@ description: >-
   My mistakes when joining new development teams. Learning to approach code
   flaws and improvements with empathy instead of judgment.
 tags: []
-added: 2025-09-20T10:31:22.371Z
+added: 2023-03-04T00:00:00.000Z
 ---
 
 A common mistake is to quickly and aggressively start pointing out the flaws of the application and proposing solutions in the first days of joining a new team. Specifically, with a **judgmental** **or superiority attitude.**
