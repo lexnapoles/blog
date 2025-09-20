@@ -1,5 +1,5 @@
 ---
-title: If I Were An Agile Coach
+title: If I were an agile coach
 slug: if-i-were-an-agile-coach
 description: >-
   Why I'd throw out the playbook and start with actual human problems instead. 
@@ -8,7 +8,7 @@ tags: []
 added: 2024-06-13T23:00:00.000Z
 ---
 
-If I were an Agile Coach, or rather, somebody whose job is to bring or improve ways of working or the way the company operates, there would not be a mention of Agile. No Scrum, no Lean, no nothing. Tell me about your pain, your situation, your context, the reasons you’re trying to change, where you’re trying to change and to whom you want to apply the change. The latter is of utmost importance. First, because it so happens that managers are the ones that hire coaches or consultants. Second, because there are managers who hire the coach to only look down, not up, to fix the workers, since they’re the problem—they’re not efficient enough, not fast enough or not good enough.
+If I were an agile coach, or rather, somebody whose job is to bring or improve ways of working or the way the company operates, there would not be a mention of Agile. No Scrum, no Lean, no nothing. Tell me about your pain, your situation, your context, the reasons you’re trying to change, where you’re trying to change and to whom you want to apply the change. The latter is of utmost importance. First, because it so happens that managers are the ones that hire coaches or consultants. Second, because there are managers who hire the coach to only look down, not up, to fix the workers, since they’re the problem—they’re not efficient enough, not fast enough or not good enough.
 
 If I were that someone who's hired to improve things, I’d like to know if it’s worth it. Are they willing to look at themselves, change habits, and be comfortable being uncomfortable? If not, it’s probably not worth it. Do they want to hire me to implement Scrum, Shape Up or the newest trendy framework? Not worth it, I would rather not be part of making developers more miserable than they already are. Is the manager fixated on making everything and everyone efficient and doing things as fast as possible? I’m out.
 
