@@ -5,7 +5,7 @@ description: >-
   Rethinking frontend testing: from obsessing over test types to focusing on
   user behavior and meaningful evidence.
 tags: []
-added: 2025-09-20T15:19:07.554Z
+added: 2024-05-11T23:00:00.000Z
 ---
 
 Confidence in the code and systems is one of the most important aspects in a software team, but often underestimated or set aside for more “valuable priorities”. It’s that significant that, in my last roles, improving the team’s confidence has been a big part of what I’ve done. Why? Because a fearful team can’t be at its best, nor can it be nimble, healthy, or adaptable.
